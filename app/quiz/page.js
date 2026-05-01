@@ -326,6 +326,17 @@ export default function QuizPage() {
                   NIVEL: <strong>{results.nivel}</strong>
                 </div>
               </div>
+
+              <div className="llm-prompt-section">
+                <p className="llm-instructions">Copia este texto y pégalo en tu IA favorita para un análisis personalizado:</p>
+                <textarea
+                  readOnly
+                  className="llm-prompt-box"
+                  value={`Acabo de realizar el test "MoneyGenius" basado en la fórmula del Capital Humano, Social y Contexto Geográfico.\n\nMis resultados son los siguientes:\n- Capital Humano: ${Math.round(results.capitalHumano)}\n- Capital Social: ${Math.round(results.capitalSocial)}\n- Contexto Geográfico: ${Math.round(results.contextoGeografico)}\n\nÍndice Total: ${Math.round(results.total)} (Nivel: ${results.nivel})\n\nDetalles de mi configuración:\n- Pesos del modelo aplicados -> Capital Humano: ${pesos.capitalHumano}%, Capital Social: ${pesos.capitalSocial}%, Contexto: ${pesos.contextoGeografico}%\n\n¿Me puedes dar un análisis detallado de mis resultados, explicarme mis áreas más fuertes, y darme estrategias específicas para aumentar mi potencial de ingresos?`}
+                  onClick={(e) => e.target.select()}
+                />
+              </div>
+
               <Link href="/">
                 <Button className="retest-button">Take test again</Button>
               </Link>
