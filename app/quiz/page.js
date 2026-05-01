@@ -7,6 +7,15 @@ import Navbar from "@/components/Navbar";
 import { computeAllResults, NIVELES_EDUCATIVOS, DOMINIO_INGLES, TIPO_CIUDAD } from "@/lib/calculator";
 import { useLanguage } from "@/components/LanguageContext";
 
+const getScoreColor = (total) => {
+  if (total < 25) return "#ef4444"; // Rojo
+  if (total < 50) return "#f97316"; // Naranja
+  if (total < 80) return "#eab308"; // Amarillo
+  if (total < 110) return "#84cc16"; // Verde claro
+  if (total < 160) return "#22c55e"; // Verde intenso
+  return "#06b6d4"; // Diamante / Cyan
+};
+
 export default function QuizPage() {
   const { t } = useLanguage();
   const [slide, setSlide] = useState(0);
@@ -319,7 +328,13 @@ export default function QuizPage() {
                 </div>
               </div>
 
-              <div className="final-score">
+              <div
+                className="final-score"
+                style={{
+                  backgroundColor: getScoreColor(results.total),
+                  boxShadow: `0 4px 15px ${getScoreColor(results.total)}33` // 20% opacity glow, smaller than before
+                }}
+              >
                 <div className="score-total">
                   <span className="score-label">{t.quiz.results.totalLabel}</span>
                   <span className="score-number">{Math.round(results.total)}</span>

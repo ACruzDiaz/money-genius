@@ -17,14 +17,17 @@ export const metadata = {
 };
 
 import { LanguageProvider } from "@/components/LanguageContext";
+import { ThemeProvider } from "@/components/ThemeContext";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
