@@ -11,7 +11,32 @@ export default function Home() {
   const infoRef = useRef(null);
 
   const scrollToInfo = () => {
-    infoRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const target = infoRef.current;
+    if (!target) return;
+
+    const startPos = window.scrollY;
+    // Removemos un poco del padding superior para que se encuadre perfecto visualmente
+    const targetPos = target.getBoundingClientRect().top + window.scrollY - 60;
+    const distance = targetPos - startPos;
+    const duration = 1200; // 1.5s: Lento y elegante
+    let startTime = null;
+
+    // Easing function "easeInOutQuart" - Sensual y fluida
+    const easeInOutQuart = (t) => t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+
+    const animation = (currentTime) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+
+      window.scrollTo(0, startPos + distance * easeInOutQuart(progress));
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
   };
 
   return (

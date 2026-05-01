@@ -13,7 +13,7 @@ const getScoreColor = (total) => {
   if (total < 80) return "#eab308"; // Amarillo
   if (total < 110) return "#84cc16"; // Verde claro
   if (total < 160) return "#22c55e"; // Verde intenso
-  return "#06b6d4"; // Diamante / Cyan
+  return "#06b6d4"; // Cyan
 };
 
 export default function QuizPage() {
