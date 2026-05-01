@@ -172,7 +172,7 @@ export default function QuizPage() {
                 >
                   {Object.entries(DOMINIO_INGLES).map(([key, val]) => (
                     <option key={key} value={key}>
-                      {val.etiqueta}
+                      {t.quiz.options.ingles[key]}
                     </option>
                   ))}
                 </select>
@@ -195,7 +195,7 @@ export default function QuizPage() {
                 >
                   {Object.entries(NIVELES_EDUCATIVOS).map(([key, val]) => (
                     <option key={key} value={key}>
-                      {val.etiqueta}
+                      {t.quiz.options.educacion[key]}
                     </option>
                   ))}
                 </select>
@@ -230,7 +230,7 @@ export default function QuizPage() {
                 >
                   {Object.entries(TIPO_CIUDAD).map(([key, val]) => (
                     <option key={key} value={key}>
-                      {val.etiqueta}
+                      {t.quiz.options.ciudad[key]}
                     </option>
                   ))}
                 </select>
@@ -357,7 +357,9 @@ export default function QuizPage() {
                     results.nivel,
                     pesos.capitalHumano,
                     pesos.capitalSocial,
-                    pesos.contextoGeografico
+                    pesos.contextoGeografico,
+                    `- Idiomas hablados: ${datosPersonales.numeroDeIdiomas}\n- Dominio del inglés: ${t.quiz.options.ingles[datosPersonales.dominioIngles]}\n- Nivel educativo: ${t.quiz.options.educacion[datosPersonales.nivelEducativo]}\n- Años de experiencia: ${datosPersonales.aniosDeExperiencia}\n- Tipo de ciudad: ${t.quiz.options.ciudad[datosPersonales.tipoCiudad]}\n- IDH local: ${datosPersonales.idhLocal}`,
+                    `- Alto nivel (×3): ${datosContactos.altoNivelSocioeconomico} contactos = ${results.desgloseCS.puntosAltoNivel} pts\n- Puente / acceso (×2): ${datosContactos.contactosPuente} contactos = ${results.desgloseCS.puntosPuente} pts\n- Mismo nivel (×1): ${datosContactos.contactosMismoNivel} contactos = ${results.desgloseCS.puntosMismoNivel} pts\n- Vínculos familia (×0.5): ${datosContactos.vinculosFuertesFamilia} contactos = ${results.desgloseCS.puntosVinculo} pts`
                   )}
                   onClick={(e) => e.target.select()}
                 />
