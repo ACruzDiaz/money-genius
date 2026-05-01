@@ -5,8 +5,10 @@ import Link from "next/link";
 import Button from "@/components/Button";
 import Navbar from "@/components/Navbar";
 import { computeAllResults, NIVELES_EDUCATIVOS, DOMINIO_INGLES, TIPO_CIUDAD } from "@/lib/calculator";
+import { useLanguage } from "@/components/LanguageContext";
 
 export default function QuizPage() {
+  const { t } = useLanguage();
   const [slide, setSlide] = useState(0);
 
   // Form State
@@ -93,11 +95,11 @@ export default function QuizPage() {
           {/* Slide 0: Configuracion de Pesos */}
           {slide === 0 && (
             <div className="slide-content">
-              <span className="section-badge">CONFIGURACIÓN</span>
-              <h2 className="slide-title">¿Qué factores consideras importantes para el éxito?</h2>
+              <span className="section-badge">{t.quiz.configSlide.badge}</span>
+              <h2 className="slide-title">{t.quiz.configSlide.title}</h2>
 
               <div className="input-group">
-                <label>Capital Humano (educación, idiomas, exp.): {pesos.capitalHumano}%</label>
+                <label>{t.quiz.configSlide.capHumano}: {pesos.capitalHumano}%</label>
                 <input
                   type="range"
                   min="0"
@@ -109,7 +111,7 @@ export default function QuizPage() {
               </div>
 
               <div className="input-group">
-                <label>Capital Social (contactos, círculos): {pesos.capitalSocial}%</label>
+                <label>{t.quiz.configSlide.capSocial}: {pesos.capitalSocial}%</label>
                 <input
                   type="range"
                   min="0"
@@ -121,7 +123,7 @@ export default function QuizPage() {
               </div>
 
               <div className="input-group">
-                <label>Contexto Geográfico (ciudad, IDH): {pesos.contextoGeografico}%</label>
+                <label>{t.quiz.configSlide.geoContext}: {pesos.contextoGeografico}%</label>
                 <input
                   type="range"
                   min="0"
@@ -137,11 +139,11 @@ export default function QuizPage() {
           {/* Slide 1 */}
           {slide === 1 && (
             <div className="slide-content">
-              <span className="section-badge">SECCIÓN 1 · IDIOMA</span>
-              <h2 className="slide-title">Language Skills</h2>
+              <span className="section-badge">{t.quiz.slide1.badge}</span>
+              <h2 className="slide-title">{t.quiz.slide1.title}</h2>
 
               <div className="input-group">
-                <label>¿Cuántos idiomas hablas? (1-8): {datosPersonales.numeroDeIdiomas}</label>
+                <label>{t.quiz.slide1.q1}: {datosPersonales.numeroDeIdiomas}</label>
                 <input
                   type="range"
                   min="1"
@@ -153,7 +155,7 @@ export default function QuizPage() {
               </div>
 
               <div className="input-group">
-                <label>¿Cuál es tu dominio del inglés?</label>
+                <label>{t.quiz.slide1.q2}</label>
                 <select
                   value={datosPersonales.dominioIngles}
                   onChange={(e) => updatePersonal("dominioIngles", e.target.value)}
@@ -172,11 +174,11 @@ export default function QuizPage() {
           {/* Slide 2 */}
           {slide === 2 && (
             <div className="slide-content">
-              <span className="section-badge">SECCIÓN 2 · EDUCACIÓN Y EXPERIENCIA</span>
-              <h2 className="slide-title">Education & Work</h2>
+              <span className="section-badge">{t.quiz.slide2.badge}</span>
+              <h2 className="slide-title">{t.quiz.slide2.title}</h2>
 
               <div className="input-group">
-                <label>¿Cuál es tu nivel educativo más alto?</label>
+                <label>{t.quiz.slide2.q1}</label>
                 <select
                   value={datosPersonales.nivelEducativo}
                   onChange={(e) => updatePersonal("nivelEducativo", e.target.value)}
@@ -191,7 +193,7 @@ export default function QuizPage() {
               </div>
 
               <div className="input-group">
-                <label>¿Cuántos años de experiencia laboral tienes? (0-35)</label>
+                <label>{t.quiz.slide2.q2}</label>
                 <input
                   type="number"
                   min="0"
@@ -207,11 +209,11 @@ export default function QuizPage() {
           {/* Slide 3 */}
           {slide === 3 && (
             <div className="slide-content">
-              <span className="section-badge">SECCIÓN 3 · CONTEXTO GEOGRÁFICO</span>
-              <h2 className="slide-title">Location matters</h2>
+              <span className="section-badge">{t.quiz.slide3.badge}</span>
+              <h2 className="slide-title">{t.quiz.slide3.title}</h2>
 
               <div className="input-group">
-                <label>¿En qué tipo de ciudad vives o trabajas?</label>
+                <label>{t.quiz.slide3.q1}</label>
                 <select
                   value={datosPersonales.tipoCiudad}
                   onChange={(e) => updatePersonal("tipoCiudad", e.target.value)}
@@ -226,7 +228,7 @@ export default function QuizPage() {
               </div>
 
               <div className="input-group">
-                <label>IDH (Índice de Desarrollo Humano) de tu ciudad (0.40 - 1.00):</label>
+                <label>{t.quiz.slide3.q2}:</label>
                 <input
                   type="number"
                   step="0.01"
@@ -243,12 +245,12 @@ export default function QuizPage() {
           {/* Slide 4 */}
           {slide === 4 && (
             <div className="slide-content">
-              <span className="section-badge">SECCIÓN 4 · CAPITAL SOCIAL</span>
-              <h2 className="slide-title">Connections</h2>
-              <p className="subtext">Cada tipo de contacto tiene un peso distinto en el modelo</p>
+              <span className="section-badge">{t.quiz.slide4.badge}</span>
+              <h2 className="slide-title">{t.quiz.slide4.title}</h2>
+              <p className="subtext">{t.quiz.slide4.subtext}</p>
 
               <div className="input-group">
-                <label>Alto nivel socioeconómico (0-99): {datosContactos.altoNivelSocioeconomico}</label>
+                <label>{t.quiz.slide4.q1}: {datosContactos.altoNivelSocioeconomico}</label>
                 <input
                   type="range"
                   min="0"
@@ -260,7 +262,7 @@ export default function QuizPage() {
               </div>
 
               <div className="input-group">
-                <label>Contactos puente (0-99): {datosContactos.contactosPuente}</label>
+                <label>{t.quiz.slide4.q2}: {datosContactos.contactosPuente}</label>
                 <input
                   type="range"
                   min="0"
@@ -272,7 +274,7 @@ export default function QuizPage() {
               </div>
 
               <div className="input-group">
-                <label>Mismo nivel profesional (0-99): {datosContactos.contactosMismoNivel}</label>
+                <label>{t.quiz.slide4.q3}: {datosContactos.contactosMismoNivel}</label>
                 <input
                   type="range"
                   min="0"
@@ -284,7 +286,7 @@ export default function QuizPage() {
               </div>
 
               <div className="input-group">
-                <label>Vínculos familia / amigos cercanos (0-99): {datosContactos.vinculosFuertesFamilia}</label>
+                <label>{t.quiz.slide4.q4}: {datosContactos.vinculosFuertesFamilia}</label>
                 <input
                   type="range"
                   min="0"
@@ -300,45 +302,54 @@ export default function QuizPage() {
           {/* Results Slide 5 */}
           {slide === 5 && results && (
             <div className="slide-content results-content">
-              <h2 className="slide-title results-title">ÍNDICE DE POTENCIAL</h2>
+              <h2 className="slide-title results-title">{t.quiz.results.title}</h2>
 
               <div className="results-grid">
                 <div className="stat-box">
-                  <span className="stat-label">Capital Humano</span>
+                  <span className="stat-label">{t.quiz.results.capHumano}</span>
                   <span className="stat-value">{Math.round(results.capitalHumano)}</span>
                 </div>
                 <div className="stat-box">
-                  <span className="stat-label">Capital Social</span>
+                  <span className="stat-label">{t.quiz.results.capSocial}</span>
                   <span className="stat-value">{Math.round(results.capitalSocial)}</span>
                 </div>
                 <div className="stat-box">
-                  <span className="stat-label">Contexto Geográfico</span>
+                  <span className="stat-label">{t.quiz.results.geoContext}</span>
                   <span className="stat-value">{Math.round(results.contextoGeografico)}</span>
                 </div>
               </div>
 
               <div className="final-score">
                 <div className="score-total">
-                  <span className="score-label">ÍNDICE TOTAL</span>
+                  <span className="score-label">{t.quiz.results.totalLabel}</span>
                   <span className="score-number">{Math.round(results.total)}</span>
                 </div>
                 <div className="score-level">
-                  NIVEL: <strong>{results.nivel}</strong>
+                  {t.quiz.results.level}: <strong>{results.nivel}</strong>
                 </div>
               </div>
 
               <div className="llm-prompt-section">
-                <p className="llm-instructions">Copia este texto y pégalo en tu IA favorita para un análisis personalizado:</p>
+                <p className="llm-instructions">{t.quiz.results.promptWarning}</p>
                 <textarea
                   readOnly
                   className="llm-prompt-box"
-                  value={`Acabo de realizar el test "MoneyGenius" basado en la fórmula del Capital Humano, Social y Contexto Geográfico.\n\nMis resultados son los siguientes:\n- Capital Humano: ${Math.round(results.capitalHumano)}\n- Capital Social: ${Math.round(results.capitalSocial)}\n- Contexto Geográfico: ${Math.round(results.contextoGeografico)}\n\nÍndice Total: ${Math.round(results.total)} (Nivel: ${results.nivel})\n\nDetalles de mi configuración:\n- Pesos del modelo aplicados -> Capital Humano: ${pesos.capitalHumano}%, Capital Social: ${pesos.capitalSocial}%, Contexto: ${pesos.contextoGeografico}%\n\n¿Me puedes dar un análisis detallado de mis resultados, explicarme mis áreas más fuertes, y darme estrategias específicas para aumentar mi potencial de ingresos?`}
+                  value={t.quiz.results.promptText(
+                    Math.round(results.capitalHumano),
+                    Math.round(results.capitalSocial),
+                    Math.round(results.contextoGeografico),
+                    Math.round(results.total),
+                    results.nivel,
+                    pesos.capitalHumano,
+                    pesos.capitalSocial,
+                    pesos.contextoGeografico
+                  )}
                   onClick={(e) => e.target.select()}
                 />
               </div>
 
               <Link href="/">
-                <Button className="retest-button">Take test again</Button>
+                <Button className="retest-button">{t.quiz.results.retest}</Button>
               </Link>
             </div>
           )}
@@ -347,13 +358,13 @@ export default function QuizPage() {
           {slide < 5 && (
             <div className="carousel-nav">
               <Button onClick={handlePrev} className={`nav-btn ${slide === 0 ? "hidden" : ""}`}>
-                Prev
+                {t.quiz.navigation.prev}
               </Button>
 
               {slide < 4 ? (
-                <Button onClick={handleNext} className="nav-btn">Next</Button>
+                <Button onClick={handleNext} className="nav-btn">{t.quiz.navigation.next}</Button>
               ) : (
-                <Button onClick={handleFinish} className="cta-button">Finish</Button>
+                <Button onClick={handleFinish} className="cta-button">{t.quiz.navigation.finish}</Button>
               )}
             </div>
           )}
