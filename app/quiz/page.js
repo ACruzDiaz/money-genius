@@ -263,7 +263,7 @@ export default function QuizPage() {
                 <input
                   type="range"
                   min="0"
-                  max="99"
+                  max="50"
                   value={datosContactos.altoNivelSocioeconomico}
                   onChange={(e) => updateContactos("altoNivelSocioeconomico", e.target.value)}
                   className="range-slider"
@@ -275,7 +275,7 @@ export default function QuizPage() {
                 <input
                   type="range"
                   min="0"
-                  max="99"
+                  max="50"
                   value={datosContactos.contactosPuente}
                   onChange={(e) => updateContactos("contactosPuente", e.target.value)}
                   className="range-slider"
@@ -287,7 +287,7 @@ export default function QuizPage() {
                 <input
                   type="range"
                   min="0"
-                  max="99"
+                  max="50"
                   value={datosContactos.contactosMismoNivel}
                   onChange={(e) => updateContactos("contactosMismoNivel", e.target.value)}
                   className="range-slider"
@@ -299,7 +299,7 @@ export default function QuizPage() {
                 <input
                   type="range"
                   min="0"
-                  max="99"
+                  max="50"
                   value={datosContactos.vinculosFuertesFamilia}
                   onChange={(e) => updateContactos("vinculosFuertesFamilia", e.target.value)}
                   className="range-slider"

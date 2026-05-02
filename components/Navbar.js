@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className="navbar-container">
         <Link href="/" className="logo">
           <span className="emoji-icon">💸</span>
-          MoneyGenius
+          <span className="hide-on-mobile">MoneyGenius</span>
         </Link>
         <div className="nav-links">
           {/* Mostramos los botones de toggle */}

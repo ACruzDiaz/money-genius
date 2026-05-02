@@ -482,3 +482,38 @@ a {
   left: 0;
   font-size: 1.2rem;
 }
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .navbar-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .hero-container,
+  .quiz-container {
+    padding: 1rem;
+  }
+
+  .quiz-card {
+    padding: 1.5rem;
+  }
+
+  .info-section {
+    padding: 1rem;
+  }
+
+  .info-card {
+    padding: 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .info-grid {
+    gap: 1rem;
+  }
+}
